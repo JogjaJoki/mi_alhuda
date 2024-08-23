@@ -4,6 +4,11 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
+                @if (session('kelas-warn'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('kelas-warn') }}
+                    </div>
+                @endif
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">

@@ -23,7 +23,7 @@
                                     <select name="wali_kelas" id="wali_kelas" class="form-control" required>
                                         <option value="#">-- Pilih Wali Kelas --</option>
                                         @foreach($guru as $g)
-                                            <option value="{{ $g->name }}">{{ $g->name }}</option>
+                                            <option value="{{ $g->id }}">{{ $g->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

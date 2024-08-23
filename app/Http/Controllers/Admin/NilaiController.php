@@ -8,11 +8,31 @@ use App\Models\Pelajaran;
 use App\Models\Nilai;
 use App\Models\Siswa;
 use Pass;
+use Auth;
 
 class NilaiController extends Controller
 {
     public function index(){
-        $nilai = Nilai::all();
+        $role = Auth::user()->roles->pluck('name')[0];
+        $nilai = null;
+        if($role == 'admin'){
+            $nilai = Nilai::all();
+        }else{
+            if(Auth::user()->kelas){
+                $nilai = Nilai::all();
+                $nilaiArr = array();
+                foreach($nilai as $n){
+                    if($n->getKelasID() == Auth::user()->kelas->id){
+                        array_push($nilaiArr, $n);
+                    }
+                }
+                $nilai = $nilaiArr;
+            }
+        }
+        if(!$nilai){
+            session()->flash('kelas-warn', 'Hanya Wali kelas yang bisa mengakses data nilai siswa ');
+            return redirect()->route('dashboard');
+        }
 
         return view('admin.nilai.index', compact(['nilai']));
     }

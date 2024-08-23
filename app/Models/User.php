@@ -42,4 +42,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function detail(){
+        return $this->hasOne(UserDetail::class, 'user_id');
+    }
+
+    public function kelas(){
+        return $this->hasOne(Kelas::class, 'user_id');
+    }
+
+    public function pelajaran(){
+        return $this->belongsToMany(Pelajaran::class, 'guru_pelajaran', 'user_id', 'kode_pelajaran');
+    }
+
 }

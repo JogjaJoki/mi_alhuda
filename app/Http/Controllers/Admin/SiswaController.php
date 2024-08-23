@@ -6,11 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kelas;
+use Auth;
 
 class SiswaController extends Controller
 {
     public function index(){
-        $siswa = Siswa::all();
+        $role = Auth::user()->roles->pluck('name')[0];
+        $siswa = null;
+        if($role == 'admin'){
+            $siswa = Siswa::all();
+        }else{
+            if(Auth::user()->kelas){
+                $siswa = Siswa::where('id_kelas', Auth::user()->kelas->id)->get();
+            }
+        }
+        if(!$siswa){
+            session()->flash('kelas-warn', 'Hanya Wali kelas yang bisa mengakses data siswa ');
+            return redirect()->route('dashboard');
+        }
 
         return view('admin.siswa.index', compact(['siswa']));
     }

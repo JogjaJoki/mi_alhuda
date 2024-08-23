@@ -16,6 +16,7 @@ class CreatePelajaransTable extends Migration
         Schema::create('pelajaran', function (Blueprint $table) {
             $table->string('kode_pelajaran', 100)->index()->primary();
             $table->string('nama');
+            $table->double('bobot');
             $table->timestamps();
         });
     }

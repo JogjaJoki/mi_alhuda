@@ -24,4 +24,8 @@ class Nilai extends Model
     public function siswa(){
         return $this->belongsTo(Siswa::class, 'NIS');
     }
+
+    public function getKelasID(){
+        return $this->siswa->kelas->id;
+    }
 }

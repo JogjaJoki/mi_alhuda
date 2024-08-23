@@ -58,4 +58,6 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/edit-nilai/{id}', [App\Http\Controllers\Admin\NilaiController::class, 'edit'])->name('admin.nilai.edit');
     Route::post('/update-nilai', [App\Http\Controllers\Admin\NilaiController::class, 'update'])->name('admin.nilai.update');
     Route::get('/delete-nilai/{id}', [App\Http\Controllers\Admin\NilaiController::class, 'delete'])->name('admin.nilai.delete');
+
+    Route::get('/siswaterbaik', [App\Http\Controllers\Admin\SawController::class, 'index'])->name('admin.saw.index');
 });

@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title"> Tambah Data Guru</h3>
@@ -16,9 +16,16 @@
                         @endif
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('admin.guru.create') }}" id="formAddGuruu" method="POST">
+                        <form action="{{ route('admin.guru.create') }}" id="formAddGuruu" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+                                <div class="form-group">
+                                    <label>Photo Guru</label>
+                                    <div>
+                                        <img id="photoPreview" src="#" alt="Your image" style="display: none; width: 200px; height: auto; margin-bottom: 10px;"/>
+                                        <input type="file" name="photo" class="form-control" id="photoInput" required>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Nomor Induk Pegawai</label>
                                     <input type="text" name="nip" class="form-control" placeholder="NIP" required>
@@ -35,6 +42,14 @@
                                     <label>Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                                 </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" name="address" class="form-control" placeholder="Address" required>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 
@@ -49,43 +64,16 @@
         </div>
     </section>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const submitButton = document.getElementById('submitBtn');
-            const formAddGuruu = document.getElementById('formAddGuruu');
-            
-            submitButton.addEventListener('click', function (event) {
-                event.preventDefault();
-                
-                // Ambil data dari formulir
-                const nip = document.getElementsByName('nip')[0].value;
-                const name = document.getElementsByName('name')[0].value;
-                const email = document.getElementsByName('email')[0].value;
-                const password = document.getElementsByName('password')[0].value;
-
-                // Ambil kunci dari local storage
-                const passUtama = localStorage.getItem('passUtama');
-
-                // Enkripsi data dengan Blowfish
-                const encryptedNip = encryptWithBlowfish(passUtama, nip);
-                const encryptedName = encryptWithBlowfish(passUtama, name);
-                const encryptedEmail = email;
-                const encryptedPassword = password;
-
-                // Gantikan nilai input dengan nilai terenkripsi
-                document.getElementsByName('nip')[0].value = encryptedNip;
-                document.getElementsByName('name')[0].value = encryptedName;
-                document.getElementsByName('email')[0].value = encryptedEmail;
-                document.getElementsByName('password')[0].value = encryptedPassword;
-
-                // Submit formulir
-                // document.forms[0].submit();
-                formAddGuruu.submit();
-            });
-
-            function encryptWithBlowfish(key, data) {
-                const bf = new Blowfish(key);
-                const encrypted = bf.encrypt(data);
-                return encrypted; 
+        document.getElementById('photoInput').addEventListener('change', function(event) {
+            const [file] = event.target.files;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('photoPreview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
             }
         });
     </script>

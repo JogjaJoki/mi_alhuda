@@ -42,6 +42,7 @@ class PelajaranController extends Controller
     
         $pelajaran->kode_pelajaran = $kode;
         $pelajaran->nama = $req->nama;
+        $pelajaran->bobot = $req->bobot;
     
         $pelajaran->save();
     
@@ -58,6 +59,7 @@ class PelajaranController extends Controller
         $pelajaran = Pelajaran::findOrFail($req->kode_pelajaran);
 
         $pelajaran->nama = $req->nama;
+        $pelajaran->bobot = $req->bobot;
 
         $pelajaran->save();
 

@@ -32,6 +32,7 @@
                                         <th>No</th>
                                         <th>Kode Pelajaran</th>
                                         <th>Nama Pelajaran</th>
+                                        <th>Bobot Pelajaran</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,6 +42,7 @@
                                             <td>{{ ++$index }}</td>
                                             <td>{{ $row->kode_pelajaran }}</td>
                                             <td>{{ $row->nama }}</td>
+                                            <td>{{ $row->bobot }}</td>
                                             <td>
                                                 <a href="{{ route('admin.pelajaran.edit', ['id' => $row->kode_pelajaran]) }}"
                                                     class="btn btn-warning"><i class="fa fa-edit"></i></a>

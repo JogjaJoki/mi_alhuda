@@ -1,5 +1,5 @@
 @extends('auth.layout')
-@section('title', 'Sistem Informasi Akademik || SMP')
+@section('title', 'Sistem Informasi Akademik || MI Alhuda')
 @section('content')
     <div class="login-box">
         <!-- /.login-logo -->

@@ -18,6 +18,10 @@
                                     <label>Nama Pelajaran</label>
                                     <input type="text" name="nama" class="form-control" placeholder="Nama Pelajaran" required>
                                 </div>
+                                <div class="form-group">
+                                    <label>Bobot Pelajaran</label>
+                                    <input type="number" step="0.1" name="bobot" class="form-control" placeholder="Nama Pelajaran" required>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

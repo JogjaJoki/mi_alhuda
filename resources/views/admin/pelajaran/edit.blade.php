@@ -19,6 +19,10 @@
                                     <label>Nama Pelajaran</label>
                                     <input type="text" name="nama" value="<?= $pelajaran->nama ?>" class="form-control" placeholder="Nama Pelajaran" required>
                                 </div>
+                                <div class="form-group">
+                                    <label>Bobot Pelajaran</label>
+                                    <input type="number" step="0.1" value="<?= $pelajaran->bobot ?>" name="bobot" class="form-control" placeholder="Nama Pelajaran" required>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

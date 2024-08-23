@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class UserDetail extends Model
 {
     use HasFactory;
-    protected $table = 'kelas';
 
     protected $fillable = [
         'id',
-        'nama_kelas',
-        'user_id'
+        'user_id',
+        'NIP',
+        'photo',
+        'address',
+        'phone'
     ];
 
-    public function guru(){
+    public function user(){
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function siswa(){
-        return $this->hasMany(Siswa::class, 'id_kelas');
     }
 }

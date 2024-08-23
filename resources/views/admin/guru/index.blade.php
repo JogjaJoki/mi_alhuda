@@ -33,6 +33,7 @@
                                         <th>NIP</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Photo</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,13 +41,14 @@
                                     @foreach ($guru as $index => $row)
                                         <tr>
                                             <td>{{ ++$index }}</td>
-                                            <td class="nipRow">{{ $row->NIP }}</td>
+                                            <td class="nipRow">{{ $row->detail->NIP }}</td>
                                             <td class="nameRow">{{ $row->name }}</td>
                                             <td>{{ $row->email }}</td>
+                                            <td class="nameRow"><img src="{{ asset($row->detail->photo ? 'image/photo-guru/' . $row->detail->photo : '') }}" alt="" srcset="" class="img rounded mb-3" width="150"></td>
                                             <td>
-                                                <a href="{{ route('admin.guru.edit', ['id' => $row->NIP]) }}"
+                                                <a href="{{ route('admin.guru.edit', ['id' => $row->id]) }}"
                                                     class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('admin.guru.delete', ['id' => $row->NIP]) }}"
+                                                <a href="{{ route('admin.guru.delete', ['id' => $row->id]) }}"
                                                     onclick="return confirm('Are you sure?'); return false;"
                                                     class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                             </td>

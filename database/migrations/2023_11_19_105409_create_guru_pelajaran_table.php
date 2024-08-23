@@ -16,11 +16,11 @@ class CreateGuruPelajaranTable extends Migration
         Schema::create('guru_pelajaran', function (Blueprint $table) {
             $table->id();
             $table->string('kode_pelajaran', 100);
-            $table->string('NIP', 100);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('kode_pelajaran')->references('kode_pelajaran')->on('pelajaran')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('NIP')->references('NIP')->on('guru')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

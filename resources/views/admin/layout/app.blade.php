@@ -201,29 +201,18 @@
                                         {{-- <span class="badge badge-info right">2</span> --}}
                                     </p>
                                 </a>
-                            </li>
-
-                            <!-- <li class="nav-header">LAPORAN </li>
+                            </li>    
+                            <li class="nav-header">Simple Additive Weighting</li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="{{ route('admin.saw.index') }}"
                                     class="nav-link">
-                                    <i class="nav-icon fas fa-diagnoses"></i>
+                                    <i class="nav-icon fas fa-database"></i>
                                     <p>
-                                        Nilai
-                                    </p>
-                                </a>
-                            </li> -->
-
-                            <li class="nav-item">
-                                <a href="#"
-                                    class="nav-link">
-                                    <i class="nav-icon fas fa-user"></i>
-                                    <p>
-                                        User
+                                        Siswa Terbaik
                                         {{-- <span class="badge badge-info right">2</span> --}}
                                     </p>
                                 </a>
-                            </li>          
+                            </li>   
                     </ul>
                 </nav>
                 <!-- Sidebar Menu End -->
@@ -252,7 +241,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ date('Y') }}</strong>
+            <strong>Copyright &copy; {{ date('Y') }} || MI Darul Huda</strong>
         </footer>
     </div>
     <!-- ./wrapper -->

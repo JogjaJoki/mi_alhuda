@@ -15,6 +15,11 @@ class Pelajaran extends Model
 
     protected $fillable = [
         'kode_pelajaran',
-        'nama'
+        'nama',
+        'bobot'
     ];
+
+    public function guru(){
+        return $this->belongsToMany(Pelajaran::class, 'guru_pelajaran', 'kode_pelajaran', 'user_id');
+    }
 }
